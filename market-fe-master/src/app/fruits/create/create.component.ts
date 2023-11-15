@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Fruits } from '../fruits';
 import { FruitsService } from '../fruits.service';
+import { CategoriesService } from 'src/app/categories/categories.service';
  
 @Component({
   selector: 'app-create',
@@ -20,12 +21,23 @@ export class CreateComponent implements OnInit {
       description: '',
     }
   };
+
+  allCategories: any;
  
   constructor(private fruitService:FruitsService,
+    private categoryService:CategoriesService,
     private router:Router) {}
  
-  ngOnInit(): void {}
- 
+    ngOnInit(): void {
+      this.get();
+    }
+   
+    get() {
+      this.categoryService.get().subscribe((data: any) => {
+        console.log("data:",data);
+        this.allCategories = data;
+      });
+    }
   create(){
     this.fruitService.create(this.fruitForm)
     .subscribe({

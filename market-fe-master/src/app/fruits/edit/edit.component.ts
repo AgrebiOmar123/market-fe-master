@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Fruits } from '../fruits';
 import { FruitsService } from '../fruits.service';
+import { CategoriesService } from 'src/app/categories/categories.service';
  
 @Component({
   selector: 'app-edit',
@@ -20,19 +21,30 @@ export class EditComponent implements OnInit {
       description: '',
     }
   };
+  allCategories: any;
   constructor(
     private route: ActivatedRoute,
     private router:Router,
-    private fruitService: FruitsService
+    private fruitService: FruitsService,
+    private categoryService:CategoriesService
   ) {}
+
+ 
+ 
  
   ngOnInit(): void {
+    this.get();
     this.route.paramMap.subscribe((param) => {
       var id = Number(param.get('id'));
       this.getById(id);
     });
   }
- 
+  get() {
+    this.categoryService.get().subscribe((data: any) => {
+      console.log("data:",data);
+      this.allCategories = data;
+    });
+  }
   getById(id: number) {
     this.fruitService.getById(id).subscribe((data) => {
       this.fruitForm = data;
