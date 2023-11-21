@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mt-2">
         <div class="col col-md-4 offset-md-4">
-          <a class="btn btn-primary" routerLink="/fruits/create">Create</a>
+          <a class="btn btn-primary" routerLink="/foods/create">Create</a>
         </div>
       </div>
     <table class="table">
@@ -9,21 +9,25 @@
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">Categorie</th>
+          <th scope="col">Cooktime</th>
+          <th scope="col">Favorite</th>
+          <th scope="col">Stars</th>
+          <th scope="col">Image Url</th>
+          <th scope="col">Restaurant</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of allFruits">
+        <tr *ngFor="let item of allFoods">
           <th scope="row">{{ item.id }}</th>
           <td>{{ item.name }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>{{ item.price }}</td>
-          <td>{{ item.category.name }}</td>
+          <td>{{ item.cookTime }}</td>
+          <td>{{ item.favorite }}</td>
+          <td>{{ item.stars }}</td>
+          <td>{{ item.imageUrl }}</td>
+          <td>{{ item.restaurant.name }}</td>
           
           <td>
-            <a class="btn btn-primary" [routerLink]="['/fruits/edit', item.id]">Edit</a>|
+            <a class="btn btn-primary" [routerLink]="['/foods/edit', item.id]">Edit</a>|
             <button type="button" (click)="openDeleteModal(item.id)" class="btn btn-danger">Delete</button>
           </td>
           

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Fruits } from '../fruits';
-import { FruitsService } from '../fruits.service';
-import { CategoriesService } from 'src/app/categories/categories.service';
+import { Foods } from '../foods';
+import { FoodsService } from '../foods.service';
+import {RestaurantService  } from 'src/app/restaurants/restaurants.service';
  
 @Component({
   selector: 'app-edit',
@@ -10,23 +10,27 @@ import { CategoriesService } from 'src/app/categories/categories.service';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  fruitForm: Fruits = {
+  foodsForm: Foods = {
     id: 0,
     name: '',
-    price: 0,
-    quantity: 0,
-    category:{
+    cookTime: '',
+    favorite: true,
+    stars:0,
+    imageUrl:'',
+    restaurant:{
       id: 0,
       name: '',
-      description: '',
+      imageUrl: '',
+      address:'',
+      phone:0
     }
   };
-  allCategories: any;
+  allrestaurants: any;
   constructor(
     private route: ActivatedRoute,
     private router:Router,
-    private fruitService: FruitsService,
-    private categoryService:CategoriesService
+    private foodsService: FoodsService,
+    private restaurantService:RestaurantService
   ) {}
 
  
@@ -40,22 +44,22 @@ export class EditComponent implements OnInit {
     });
   }
   get() {
-    this.categoryService.get().subscribe((data: any) => {
+    this.restaurantService.get().subscribe((data: any) => {
       console.log("data:",data);
-      this.allCategories = data;
+      this.allrestaurants = data;
     });
   }
   getById(id: number) {
-    this.fruitService.getById(id).subscribe((data) => {
-      this.fruitForm = data;
+    this.foodsService.getById(id).subscribe((data) => {
+      this.foodsForm = data;
     });
   }
  
   update() {
-    this.fruitService.update(this.fruitForm)
+    this.foodsService.update(this.foodsForm)
     .subscribe({
       next:(data) => {
-        this.router.navigate(["/fruits/home"]);
+        this.router.navigate(["/foods/home"]);
       },
       error:(err) => {
         console.log(err);

@@ -6,15 +6,15 @@ import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {
-    path: 'categories/home',
+    path: 'restaurants/home',
     component: HomeComponent,
   },
   {
-    path: 'categories/create',
+    path: 'restaurants/create',
     component: CreateComponent,
   },
   {
-    path:'categories/edit/:id',
+    path:'restaurants/edit/:id',
     component: EditComponent
   }
 ];
@@ -23,7 +23,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CategoriesRoutingModule { }
+export class RestaurantRoutingModule { }
  
 
  

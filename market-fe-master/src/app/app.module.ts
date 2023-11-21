@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FruitsModule } from './fruits/fruits.module';
+import { FoodsModule } from './foods/foods.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriesModule } from './categories/categories.module';
+import { RestaurantModule } from 'src/app/restaurants/restaurants.module';
+
+
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { CategoriesModule } from './categories/categories.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FruitsModule,
+    FoodsModule,
     HttpClientModule,
-    CategoriesModule
+    RestaurantModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

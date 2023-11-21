@@ -5,15 +5,15 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 const routes: Routes = [
   {
-    path: 'fruits/home',
+    path: 'foods/home',
     component: HomeComponent,
   },
   {
-    path: 'fruits/create',
+    path: 'foods/create',
     component: CreateComponent,
   },
   {
-    path:'fruits/edit/:id',
+    path:'foods/edit/:id',
     component: EditComponent
   }
 
@@ -23,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FruitsRoutingModule { }
+export class FoodsRoutingModule { }

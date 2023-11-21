@@ -1,0 +1,34 @@
+<div class="container">
+    <legend>Edit Item</legend>
+    <form>
+      <div class="mb-3">
+        <label for="txtName" class="form-label">Name</label>
+        <input type="text" name="name" [(ngModel)] = "foodsForm.name" class="form-control" id="txtName" />
+      </div>
+      <div class="mb-3">
+        <label for="txtPrice" class="form-label">Price</label>
+        <input type="number" name="price" [(ngModel)] = "foodsForm.cookTime" class="form-control" id="txtPrice" />
+      </div>
+      <div class="mb-3">
+        <label for="txtQuantity" class="form-label">Quantity</label>
+        <input type="number" name="quantity" [(ngModel)] = "foodsForm.favorite" class="form-control" id="txtQuantity" />
+      </div>
+      <div class="mb-3">
+        <label for="txtQuantity" class="form-label">Quantity</label>
+        <input type="number" name="quantity" [(ngModel)] = "foodsForm.stars" class="form-control" id="txtQuantity" />
+      </div>
+      <div class="mb-3">
+        <label for="txtQuantity" class="form-label">Quantity</label>
+        <input type="number" name="quantity" [(ngModel)] = "foodsForm.imageUrl" class="form-control" id="txtQuantity" />
+      </div>
+      <div class="mb-3">
+        <label for="txtName" class="form-label">Restaurant</label>
+        <select [(ngModel)]="foodsForm.restaurant.id" class="form-control" name="category">
+            <option *ngFor="let option of allrestaurants " [value]="option.id">
+                {{ option.name }}
+            </option>
+        </select>
+    </div>
+      <button type="button" (click)="update()" class="btn btn-primary">Update</button>
+    </form>
+</div>
